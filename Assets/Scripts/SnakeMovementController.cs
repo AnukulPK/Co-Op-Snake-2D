@@ -68,11 +68,35 @@ public class SnakeMovementController : MonoBehaviour
         segments.Add(segment);
     }
 
+    private void Shrink()
+    {
+        int shrinkAmount = 1;
+        int segmentsToRemove = Mathf.Min(shrinkAmount, segments.Count);
+
+        // Remove segments from the end (tail) of the snake
+        for (int i = 0; i < segmentsToRemove; i++)
+        {
+            int lastIndex = segments.Count - 1;
+            if (lastIndex >= 1)
+            {
+                // Destroy the last segment in the list
+                Destroy(segments[segments.Count - 1].gameObject);
+                segments.RemoveAt(segments.Count - 1);
+            }
+        }
+
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<MassGainerController>() != null)
         {
             Grow();
+        }
+
+        if (collision.gameObject.GetComponent<MassBurnerController>() != null)
+        {
+            Shrink();
         }
     }
 
