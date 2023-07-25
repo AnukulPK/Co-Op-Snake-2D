@@ -87,16 +87,31 @@ public class SnakeMovementController : MonoBehaviour
 
     }
 
+    private void ResetState()
+    {
+        for(int i = 1; i < segments.Count ; i++)
+        {
+            Destroy(segments[i].gameObject);
+        }
+
+        segments.Clear();
+        segments.Add(this.transform);
+
+        this.transform.position = Vector3.zero;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<MassGainerController>() != null)
         {
             Grow();
-        }
-
-        if (collision.gameObject.GetComponent<MassBurnerController>() != null)
+        } else if (collision.gameObject.GetComponent<MassBurnerController>() != null)
         {
             Shrink();
+        }
+        else
+        {
+            ResetState();
         }
     }
 
