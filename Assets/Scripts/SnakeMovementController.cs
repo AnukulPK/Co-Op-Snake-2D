@@ -33,9 +33,29 @@ public class SnakeMovementController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        /*Iterating in reverse order to move the different parts sequentially from the back*/
+        for(int i = segments.Count - 1; i > 0; i--)
+        {
+            segments[i].position = segments[i - 1].position;
+        }
+
         this.transform.position = new Vector3(Mathf.Round(this.transform.position.x) + direction.x, Mathf.Round(this.transform.position.y)+direction.y,0.0f);
+
     }
 
+    private void Grow()
+    {
+        Transform segment =  Instantiate(this.segmentPrefab);
+        segment.position = segments[segments.Count - 1].position;
+        segments.Add(segment);
+    }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<MassGainerController>() != null)
+        {
+            Grow();
+        }
+    }
 
 }
