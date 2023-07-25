@@ -7,6 +7,7 @@ public class SnakeMovementController : MonoBehaviour
     private Vector2 direction = Vector2.right;
     private List<Transform> segments;
     public Transform segmentPrefab;
+    public BoxCollider2D boundaryArea;
 
     private void Start()
     {
@@ -33,13 +34,30 @@ public class SnakeMovementController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Bounds bounds = this.boundaryArea.bounds;
         /*Iterating in reverse order to move the different parts sequentially from the back*/
-        for(int i = segments.Count - 1; i > 0; i--)
+        for (int i = segments.Count - 1; i > 0; i--)
         {
             segments[i].position = segments[i - 1].position;
         }
 
-        this.transform.position = new Vector3(Mathf.Round(this.transform.position.x) + direction.x, Mathf.Round(this.transform.position.y)+direction.y,0.0f);
+        this.transform.position = new Vector3(Mathf.Round(this.transform.position.x) + direction.x, Mathf.Round(this.transform.position.y) + direction.y, 0.0f);
+
+        if (this.transform.position.x > bounds.max.x)
+        {
+            this.transform.position = new Vector3(-Mathf.Round(this.transform.position.x) + direction.x, Mathf.Round(this.transform.position.y) + direction.y, 0.0f);
+        }else if (this.transform.position.x < bounds.min.x)
+        {
+            this.transform.position = new Vector3(-Mathf.Round(this.transform.position.x) + direction.x, Mathf.Round(this.transform.position.y) + direction.y, 0.0f);
+        }
+        else if (this.transform.position.y > bounds.max.y)
+        {
+            this.transform.position = new Vector3(Mathf.Round(this.transform.position.x) + direction.x, -Mathf.Round(this.transform.position.y) + direction.y, 0.0f);
+        }
+        else if (this.transform.position.y < bounds.min.y)
+        {
+            this.transform.position = new Vector3(Mathf.Round(this.transform.position.x) + direction.x, -Mathf.Round(this.transform.position.y) + direction.y, 0.0f);
+        }
 
     }
 
