@@ -8,6 +8,7 @@ public class SnakeMovementController : MonoBehaviour
     private List<Transform> segments;
     public Transform segmentPrefab;
     public BoxCollider2D boundaryArea;
+    public ScoreController scoreController;
 
     private void Start()
     {
@@ -66,6 +67,7 @@ public class SnakeMovementController : MonoBehaviour
         Transform segment =  Instantiate(this.segmentPrefab);
         segment.position = segments[segments.Count - 1].position;
         segments.Add(segment);
+        scoreController.IncreaseScore(10);
     }
 
     private void Shrink()
@@ -85,6 +87,8 @@ public class SnakeMovementController : MonoBehaviour
             }
         }
 
+        scoreController.DecreaseScore(10);
+
     }
 
     private void ResetState()
@@ -98,6 +102,7 @@ public class SnakeMovementController : MonoBehaviour
         segments.Add(this.transform);
 
         this.transform.position = Vector3.zero;
+        scoreController.ResetUI();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
