@@ -9,6 +9,7 @@ public class SnakeMovementController : MonoBehaviour
     public Transform segmentPrefab;
     public BoxCollider2D boundaryArea;
     public ScoreController scoreController;
+    public GameOverController gameOverController;
 
     private void Start()
     {
@@ -113,11 +114,12 @@ public class SnakeMovementController : MonoBehaviour
         } else if (collision.gameObject.GetComponent<MassBurnerController>() != null)
         {
             Shrink();
-        }
-        else
+        } else if (collision.tag == "SelfPlayer")
         {
-            ResetState();
+            gameOverController.PlayerDied();
+            this.enabled = false;
         }
+        
     }
 
 }
