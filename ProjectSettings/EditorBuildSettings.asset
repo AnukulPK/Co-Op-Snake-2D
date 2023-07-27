@@ -10,5 +10,8 @@ EditorBuildSettings:
     guid: 5ae5a6cd06f8d7e4fa075e8181338019
   - enabled: 1
     path: Assets/Scenes/SnakeSinglePlayer.unity
+    guid: 0c5c2da999cc5344f938a05a6950e6ef
+  - enabled: 1
+    path: Assets/Scenes/SnakeMultiPlayer.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   m_configObjects: {}
