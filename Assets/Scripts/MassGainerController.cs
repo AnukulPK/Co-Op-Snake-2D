@@ -24,7 +24,7 @@ public class MassGainerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<SnakeMovementController>()!=null)
+        if (collision.gameObject.GetComponent<SnakeMovementController>() != null || collision.gameObject.GetComponent<SnakeAlternateMovementController>() != null)
         {
             RandomizePosition();
         }    
