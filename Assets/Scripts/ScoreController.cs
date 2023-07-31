@@ -9,6 +9,8 @@ public class ScoreController : MonoBehaviour
 
     private int score = 0;
 
+    public DoubleScoreController doubleScoreController;
+
     private void Awake()
     {
         scoreText = GetComponent<TextMeshProUGUI>();
