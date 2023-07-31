@@ -9,9 +9,11 @@ https://www.loom.com/share/535d50e634194f8e8e7b400d9196d285
 Features Implemented:
 1. Basic UI, with death and score details mentioned.
 2. The snake consuming the mass gainer food ![burger](https://github.com/AnukulPK/Co-Op-Snake-2D/assets/39963783/d6cbe048-2a16-4d85-9a77-01533bb63355) will increase the snake length and consuming the mass burner food ![fire](https://github.com/AnukulPK/Co-Op-Snake-2D/assets/39963783/b6c4bfe4-3361-46c0-b6e5-6d7dbaa405e8) will decrease the length of the snake.
-3. In the multiplayer version, one of the snakes movement can be controlled using the arrow keys and the other snake's movement can be controlled using the keys W A S D.
-4. Screen wrapping has been implemented - The snake when it hits the boundary will enter back into the game scene from the opposite end.
-5. Powerups of shield and double score have been implemented.
+3. The snake consuming the shield will protect itself from dying for a periodo of 3seconds. ![image](https://github.com/AnukulPK/Co-Op-Snake-2D/assets/39963783/907bb7ca-78d4-48ee-8f25-16be44b21636)
+4. The snake consuming the double score, will double its score when it consumes a mass gainer![image](https://github.com/AnukulPK/Co-Op-Snake-2D/assets/39963783/b4afea8b-92ae-4e66-a131-d1fab366364e)
+5. In the multiplayer version, one of the snakes movement can be controlled using the arrow keys and the other snake's movement can be controlled using the keys W A S D.
+6. Screen wrapping has been implemented - The snake when it hits the boundary will enter back into the game scene from the opposite end.
+7. Powerups of shield and double score have been implemented.
 
 Game Images for Reference:
 
