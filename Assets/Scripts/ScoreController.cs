@@ -6,10 +6,9 @@ using UnityEngine;
 public class ScoreController : MonoBehaviour
 {
     private TextMeshProUGUI scoreText;
+    public DoubleScoreController doubleScoreController;
 
     private int score = 0;
-
-    public DoubleScoreController doubleScoreController;
 
     private void Awake()
     {
@@ -24,7 +23,15 @@ public class ScoreController : MonoBehaviour
 
     public void IncreaseScore(int increment)
     {
-        score += increment;
+        if (doubleScoreController.GetDoubleScoreStatus()==true)
+        {
+            score += 2 * increment;
+        }
+        else
+        {
+            score += increment;
+        }
+      
         RefreshUI();
     }
 

@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DoubleScoreController : MonoBehaviour
+public class SpeedUpController : MonoBehaviour
 {
     public BoxCollider2D gridArea;
-    private float doubleScoreDuration = 3f;
-    private bool doubleScoreStatus = false; 
+    private float speedUpDuration = 3f;
+    private float speedMultipler = 2f;
 
     private void Start()
     {
@@ -24,35 +24,34 @@ public class DoubleScoreController : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<SnakeMovementController>() != null || collision.gameObject.GetComponent<SnakeAlternateMovementController>() != null)
         {
-            ApplyDoubleScorePowerup(collision.gameObject);
             RandomizePosition();
+            if (collision.TryGetComponent(out Rigidbody2D rb))
+            {
+                rb.velocity *= speedMultipler;
+            }
         }
     }
 
-    void ApplyDoubleScorePowerup(GameObject snakeHead)
+    void ApplyspeedUpPowerup(GameObject snakeHead)
     {
-        //Setting double score status to true on trigger
-        doubleScoreStatus = true;
+       
+        snakeHead.GetComponent<Collider2D>().enabled = false;
 
-        
+       
         StartCoroutine(ResetCollisionAfterDuration(snakeHead));
     }
 
-    public bool GetDoubleScoreStatus()
-    {
-        return doubleScoreStatus;
-    }
 
     IEnumerator ResetCollisionAfterDuration(GameObject snakeHead)
     {
-        yield return new WaitForSeconds(doubleScoreDuration);
+        yield return new WaitForSeconds(speedUpDuration);
 
-        // Reset doubleScore status 
-        doubleScoreStatus=false;
+       
+        snakeHead.GetComponent<Collider2D>().enabled = true;
 
     }
 }
