@@ -13,9 +13,12 @@ Features Implemented:
 ![shield](https://github.com/AnukulPK/Co-Op-Snake-2D/assets/39963783/d65f1c68-01ee-4935-8152-b1652b8145bc)
 4. The snake consuming the double score, will double its score when it consumes a mass gainer
 ![double-score](https://github.com/AnukulPK/Co-Op-Snake-2D/assets/39963783/43932fb1-4edb-4f15-9709-bb9946418518)
-5. In the multiplayer version, one of the snakes movement can be controlled using the arrow keys and the other snake's movement can be controlled using the keys W A S D.
-6. Screen wrapping has been implemented - The snake when it hits the boundary will enter back into the game scene from the opposite end.
-7. Powerups of shield and double score have been implemented.
+5. The snake consuming the rocket will increase its speed for a period of 3 seconds.
+![rocket](https://github.com/AnukulPK/Co-Op-Snake-2D/assets/39963783/07d18400-d4d5-423d-bd8b-8b9f28639ae8)
+
+6. In the multiplayer version, one of the snakes movement can be controlled using the arrow keys and the other snake's movement can be controlled using the keys W A S D.
+7. Screen wrapping has been implemented - The snake when it hits the boundary will enter back into the game scene from the opposite end.
+8. Powerups of shield and double score have been implemented.
 
 Game Images for Reference:
 
